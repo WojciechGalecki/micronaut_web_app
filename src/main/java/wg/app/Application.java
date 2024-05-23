@@ -1,4 +1,4 @@
-package wg;
+package wg.app;
 
 import io.micronaut.runtime.Micronaut;
 

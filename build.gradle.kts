@@ -5,7 +5,7 @@ plugins {
 }
 
 version = "0.1"
-group = "wg"
+group = "wg.app"
 
 repositories {
     mavenCentral()
@@ -17,12 +17,14 @@ dependencies {
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic")
+    runtimeOnly("org.yaml:snakeyaml")
+
     testImplementation("io.micronaut:micronaut-http-client")
 }
 
 
 application {
-    mainClass = "wg.Application"
+    mainClass = "wg.app.Application"
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("21")
@@ -36,7 +38,7 @@ micronaut {
     testRuntime("junit5")
     processing {
         incremental(true)
-        annotations("wg.*")
+        annotations("wg.app.*")
     }
     aot {
     // Please review carefully the optimizations enabled below
