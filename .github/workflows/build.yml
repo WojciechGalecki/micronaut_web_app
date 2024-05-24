@@ -48,8 +48,8 @@ jobs:
       - name: Build app images
         run: |
           cd ./ops/docker/app
-          ./build-image.sh $app:latest &&
-          docker tag $app:0.0.1 ${{ env.REGISTRY }}/$app:${GITHUB_REF##*/}
+          ./build-image.sh wg/app:0:0:1 &&
+          docker tag wg/app:0.0.1 ${{ env.REGISTRY }}/$app:${GITHUB_REF##*/}
           cd ..
 
       - name: Log in to the Container registry
