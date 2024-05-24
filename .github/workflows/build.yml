@@ -51,12 +51,6 @@ jobs:
           ./build-image.sh $app:latest &&
           docker tag $app:latest ${{ env.REGISTRY }}/$app:${GITHUB_REF##*/}
           cd ..
-#          for app in `ls`
-#            do cd $app && \
-#            ./build-image.sh $app:latest &&
-#            docker tag $app:latest ${{ env.REGISTRY }}/$app:${GITHUB_REF##*/} && \
-#            cd ..;
-#          done
 
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
@@ -67,4 +61,6 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          echo docker images
+          docker images
+          
+#          docker push ${{ env.REGISTRY }}/$USERNAME/app:${GITHUB_REF##*/}
