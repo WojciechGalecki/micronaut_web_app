@@ -48,8 +48,10 @@ jobs:
       packages: write
 
     steps:
-      - name: Build app images
+      - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Build app image
         run: |
           cd ./ops/docker/app
           ./build-image.sh && docker tag $IMAGE_NAME --label "run_id=${GITHUB_RUN_ID}"
