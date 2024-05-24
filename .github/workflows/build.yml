@@ -40,7 +40,7 @@ jobs:
 
       - name: Build app images
         run: |
-          cd ./ops/docker/app && ./build-image.sh && docker tag wg/app:0.0.1-SNAPSHOT ${{ env.REGISTRY }}/wg/app
+          cd ./ops/docker/app && ./build-image.sh && docker tag wg/app:0.0.1-SNAPSHOT ${{ env.REGISTRY }}/micronaut_web_app
 
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
@@ -53,4 +53,4 @@ jobs:
         run: |
           docker images
           
-          docker push ${{ env.REGISTRY }}/wg/app
+          docker push ${{ env.REGISTRY }}/micronaut_web_app
