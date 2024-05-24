@@ -60,4 +60,4 @@ jobs:
         run: |
           docker images
           
-          docker push ${{ env.REGISTRY }}/${{ github.actor }}/wg/app:0.0.1-SNAPSHOT
+          docker push ${{ env.REGISTRY }}/wojciechgalecki/wg/app:0.0.1-SNAPSHOT
