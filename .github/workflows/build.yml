@@ -47,13 +47,16 @@ jobs:
 
       - name: Build app images
         run: |
-          cd ./ops/docker
-          for app in `ls`
-            do cd $app && \
-            ./build-image.sh $app:latest &&
-            docker tag $app:latest ${{ env.REGISTRY }}/$app:${GITHUB_REF##*/} && \
-            cd ..;
-          done
+          cd ./ops/docker/app
+          ./build-image.sh $app:latest &&
+          docker tag $app:latest ${{ env.REGISTRY }}/$app:${GITHUB_REF##*/}
+          cd ..
+#          for app in `ls`
+#            do cd $app && \
+#            ./build-image.sh $app:latest &&
+#            docker tag $app:latest ${{ env.REGISTRY }}/$app:${GITHUB_REF##*/} && \
+#            cd ..;
+#          done
 
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
