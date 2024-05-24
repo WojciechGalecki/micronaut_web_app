@@ -15,7 +15,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: app
+  IMAGE_NAME: wg/app
 
 jobs:
   build-and-push:
@@ -42,9 +42,7 @@ jobs:
       run: ./gradlew test
 
     - name: Build app image
-      run: |
-        cd ./ops/docker/app
-        ./build-image.sh && docker tag $IMAGE_NAME:latest --label "run_id=${GITHUB_RUN_ID}"
+      run: cd ./ops/docker/app && ./build-image.sh
 
     - name: Log in to the Container registry
       uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
