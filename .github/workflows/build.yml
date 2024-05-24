@@ -63,4 +63,4 @@ jobs:
         run: |
           docker images
           
-#          docker push ${{ env.REGISTRY }}/$USERNAME/app:${GITHUB_REF##*/}
+          docker push ${{ env.REGISTRY }}/app:${GITHUB_REF##*/}
