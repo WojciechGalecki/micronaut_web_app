@@ -48,8 +48,9 @@ jobs:
       - name: Build app images
         run: |
           cd ./ops/docker/app
-          ./build-image.sh wg/app:0:0:1 &&
-          docker tag wg/app:0.0.1 ${{ env.REGISTRY }}/$app:${GITHUB_REF##*/}
+          ./build-image.sh
+#          wg/app:0:0:1 &&
+#          docker tag wg/app:0.0.1 ${{ env.REGISTRY }}/$app:${GITHUB_REF##*/}
           
           docker images
 
@@ -64,4 +65,4 @@ jobs:
         run: |
           docker images
           
-          docker push ${{ env.REGISTRY }}/app:${GITHUB_REF##*/}
+          docker push ${{ env.REGISTRY }}/wg/app:${GITHUB_REF##*/}
