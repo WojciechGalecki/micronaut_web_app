@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-TAG=${1:-ghcr.io/wg/app:0.0.1-SNAPSHOT}
+TAG=${1:-wg/app:0.0.1-SNAPSHOT}
 
 pushd ../../../ && ./gradlew --build-cache build && popd
 
