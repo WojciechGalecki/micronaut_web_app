@@ -51,7 +51,7 @@ jobs:
           for app in `ls`
             do cd $app && \
             ./build-image.sh $app:latest &&
-            docker tag $app:latest ${{ env.REGISTRY }}/$app:${{ github.ref }} && \
+            docker tag $app:latest ${{ env.REGISTRY }}/$app:${GITHUB_REF##*/} && \
             cd ..;
           done
 
