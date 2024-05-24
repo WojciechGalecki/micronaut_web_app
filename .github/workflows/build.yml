@@ -50,7 +50,8 @@ jobs:
           cd ./ops/docker/app
           ./build-image.sh wg/app:0:0:1 &&
           docker tag wg/app:0.0.1 ${{ env.REGISTRY }}/$app:${GITHUB_REF##*/}
-          cd ..
+          
+          docker images
 
       - name: Log in to the Container registry
         uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
