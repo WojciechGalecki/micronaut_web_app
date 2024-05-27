@@ -12,7 +12,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: wojciechgalecki/micronaut_web_app
-  #IMAGE_TAG: 1.0.${{ github.run_number }}
 
 jobs:
   build-and-push:
@@ -51,12 +50,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-#      - name: Extract Docker metadata
-#        id: meta
-#        uses: docker/metadata-action@v1
-#        with:
-#          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
       - name: Build app image
         run: |
           cd ./ops/docker/app
@@ -68,12 +61,3 @@ jobs:
           docker images
 
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
-#      - name: Build and push Docker image
-#        id: build-and-push
-#        uses: docker/build-push-action@v2
-#        with:
-#          context: ops/docker/app
-#          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-#          # tags: ghcr.io/wojciechgalecki/micronaut_web_app:${{ env.IMAGE_TAG }}
-#          labels: ${{ steps.meta.outputs.labels }}
