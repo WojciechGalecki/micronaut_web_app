@@ -7,21 +7,22 @@ import org.junit.jupiter.api.Test;
 import io.micronaut.http.HttpStatus;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
+import io.micronaut.json.tree.JsonNode;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 
 @MicronautTest
-public class ApiControllerTest {
+public class UserControllerTest {
 
     @Inject
-    @Client("/")
+    @Client("/users")
     HttpClient httpClient;
 
     @Test
     void When_Get_Expect_ProperResponse() {
-        var response = httpClient.toBlocking().exchange("/test", String.class);
+        var response = httpClient.toBlocking().exchange("/", JsonNode.class);
 
         assertEquals(HttpStatus.OK, response.status());
-        assertEquals("test", response.body());
+        assertEquals(1, response.body().size());
     }
 }
